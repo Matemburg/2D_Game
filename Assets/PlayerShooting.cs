@@ -28,5 +28,24 @@ public class PlayerShooting : MonoBehaviour {
 			GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position + offset, transform.rotation);
 			bulletGO.layer = bulletLayer;
 		}
+
+
 	}
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag== "Asteroid")
+        {
+            AsteroidHit(col.gameObject);
+        }
+    }
+
+    void AsteroidHit(GameObject Asteroid)
+    {
+        Debug.Log("OnCollisionEnter2D");
+        GameObject MiniAsteroid = GameObject.Instantiate(Asteroid);
+        MiniAsteroid.transform.localScale *= 0.5f;
+        Destroy(Asteroid);
+
+    }
 }
