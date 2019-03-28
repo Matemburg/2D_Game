@@ -5,7 +5,7 @@ using UnityEngine;
 public class StarshipControl : MonoBehaviour
 {
 
-
+    public GameObject flame;
     float Speed = -5;
     float RotationSpeed = 1;
 
@@ -19,8 +19,18 @@ public class StarshipControl : MonoBehaviour
     {
         float ZRotation = Input.GetAxis("Horizontal") * RotationSpeed;
         float YSpeed = Input.GetAxis("Vertical") * Speed;
+        if (YSpeed < 0)
+        {
+           GetComponent<Rigidbody2D>().AddForce(transform.up * YSpeed);
+            flame.SetActive(true);
+            GetComponent<Stats>().Fuel--;
+        }
+        else
+        {
+            flame.SetActive(false);
+        }
         GetComponent<Rigidbody2D>().AddTorque(-ZRotation, 0);
-        GetComponent<Rigidbody2D>().AddForce(transform.up * YSpeed);
+        
 
 
 

@@ -23,6 +23,14 @@ public class BulletHitter : MonoBehaviour {
         {
             AsteroidHit(col.gameObject);
         }
+
+        if (col.gameObject.tag == "Player")
+        {
+            col.gameObject.GetComponent<Stats>().HP = col.gameObject.GetComponent<Stats>().HP-10;
+
+            Destroy(gameObject);
+
+        }
     }
 
     void AsteroidHit(GameObject Asteroid)
