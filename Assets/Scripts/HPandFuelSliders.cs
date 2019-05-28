@@ -10,7 +10,6 @@ public class HPandFuelSliders : MonoBehaviour {
     public GameObject Starship;
     public Slider HPslider;
     public Slider FuelSlider;
-    public GameObject TuretSpawner;
 
     // Use this for initialization
     void Start () {
@@ -30,7 +29,7 @@ public class HPandFuelSliders : MonoBehaviour {
 
         HPnumber.text = HP.ToString() + "/" + MaxHP.ToString();
         Fuelnumber.text = Fuel.ToString() + "/" + MaxFuel.ToString();
-        TuretsLeft.text = "Turets Left: " + TuretSpawner.GetComponent<TuretRandomSpawner>().TuretNumber.ToString();
+        TuretsLeft.text = "Turets Left: " + GameObject.FindGameObjectsWithTag("Turet").Length.ToString();
 
         FuelSlider.maxValue = MaxFuel;
         FuelSlider.value = Fuel;

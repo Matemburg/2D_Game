@@ -184,10 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partToRotate: {fileID: 1315649916099702}
   ShotingPoint: {fileID: 1982287735275990}
-  range: 7.2
-  Turnspeed: 3
+  range: 7.5
+  Turnspeed: 5
   bulletPrefab: {fileID: 1898498334075202, guid: 4db39cebb22d858488f9a46da01541ba,
     type: 2}
+  sound: {fileID: 8300000, guid: 53403f0986b5e4b41bfa57caf74b43e4, type: 3}
   fireDelay: 0.2
 --- !u!212 &212236067945861282
 SpriteRenderer:

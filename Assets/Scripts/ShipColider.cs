@@ -34,7 +34,7 @@ public class ShipColider : MonoBehaviour {
     void FuelCrateHit(GameObject Crate)
     {
         Destroy(Crate);
-        GetComponent<Stats>().Fuel += 10;
+        GetComponent<Stats>().Fuel += 25;
         if (GetComponent<Stats>().Fuel > GetComponent<Stats>().MaxFuel)
             GetComponent<Stats>().Fuel = GetComponent<Stats>().MaxFuel;
         Destroy(Crate);

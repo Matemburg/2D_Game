@@ -7,14 +7,16 @@ public class Turret : MonoBehaviour {
     
 
     private Transform target;
-    private GameObject targetEnemy;
+
     public GameObject partToRotate;
     public GameObject ShotingPoint;
     public float range = 15f;
     private float angle = 0;
     public float Turnspeed = 5f;
     public GameObject bulletPrefab;
-    int bulletLayer;
+
+    public AudioClip sound;
+    private AudioSource source { get { return GetComponent<AudioSource>(); } }
 
     public float fireDelay = 0.25f;
     float cooldownTimer = 0;
@@ -23,6 +25,11 @@ public class Turret : MonoBehaviour {
     // Use this for initialization
     void Start () {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        gameObject.AddComponent<AudioSource>();
+
+        source.clip = sound;
+
+        source.playOnAwake = false;
     }
 	
 	// Update is called once per frame
@@ -36,16 +43,16 @@ public class Turret : MonoBehaviour {
 
         if (System.Math.Abs(angle)<15 && cooldownTimer<0)
         {
-           
 
-            
-                // SHOOT!
-                cooldownTimer = fireDelay;
+
+            source.PlayOneShot(sound);
+            // SHOOT!
+            cooldownTimer = fireDelay;
 
                 
 
                 GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, ShotingPoint.transform.position, partToRotate.transform.rotation*new Quaternion(0,0,-1,0));
-                bulletGO.layer = bulletLayer;
+;
             
         }
 
@@ -71,7 +78,6 @@ public class Turret : MonoBehaviour {
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy;
         }
         else
         {

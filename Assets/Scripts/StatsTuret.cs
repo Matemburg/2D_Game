@@ -20,7 +20,7 @@ public class StatsTuret : MonoBehaviour
         if (HP < 0)
         {
             TuretSpawner.GetComponent<TuretRandomSpawner>().TuretNumber -= 1; 
-            if(Random.Range(0f, 2f)<=1)
+            
             Instantiate(FuelCrate, transform.position, transform.rotation);
             Destroy(gameObject);
         }
