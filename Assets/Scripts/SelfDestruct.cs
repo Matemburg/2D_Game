@@ -5,7 +5,7 @@ public class SelfDestruct : MonoBehaviour {
 
 	public float timer = 1f;
 
-	void Update () {
+	void FixedUpdate () {
         timer--;
 
 		if(timer <= 0) {
