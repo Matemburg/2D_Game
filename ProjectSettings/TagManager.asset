@@ -8,6 +8,12 @@ TagManager:
   - Turet
   - FuelCrate
   - TuretSpawner
+  - LevelSystem
+  - AsteriodSpawner
+  - AsderoidsSpawner
+  - AsderoidsSpawner paralax 1
+  - AsderoidsSpawner paralax 2
+  - EventSystem
   layers:
   - Default
   - TransparentFX

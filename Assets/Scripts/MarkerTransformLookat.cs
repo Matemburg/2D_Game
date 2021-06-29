@@ -6,8 +6,8 @@ public class MarkerTransformLookat : MonoBehaviour {
 
     public GameObject ship;
     GameObject Target;
-
     public GameObject[] turets;
+
     void Update () {
         transform.position = new Vector3(ship.transform.position.x, ship.transform.position.y + 5f);
         turets = GameObject.FindGameObjectsWithTag  ("Turet");
@@ -29,9 +29,10 @@ public class MarkerTransformLookat : MonoBehaviour {
                 Target = turet;
             }
         }
-        Quaternion rotation = Quaternion.LookRotation
-             (Target.transform.position - transform.position, transform.TransformDirection(Vector3.up));
-        transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w-0.5f);
+        Vector3 diff = Target.transform.position - ship.transform.position;
+        diff.Normalize();
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
     }
 
 

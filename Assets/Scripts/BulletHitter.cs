@@ -26,7 +26,8 @@ public class BulletHitter : MonoBehaviour {
 
         else if (col.gameObject.tag == "Player")
         {
-            col.gameObject.GetComponent<Stats>().HP = col.gameObject.GetComponent<Stats>().HP-10;
+            GameObject eventSystem = GameObject.FindGameObjectWithTag("EventSystem");
+            eventSystem.GetComponent<Stats>().HP = eventSystem.GetComponent<Stats>().HP-10;
 
             Destroy(gameObject);
 

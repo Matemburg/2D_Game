@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ShipColider : MonoBehaviour {
 
+    public Stats stats;
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Asteroid")
         {
             AsteroidHit(col.gameObject);
-            GetComponent<Stats>().HP = GetComponent<Stats>().HP - 20;
+            stats.HP = stats.HP - 20;
         }
        
     }
@@ -34,9 +36,9 @@ public class ShipColider : MonoBehaviour {
     void FuelCrateHit(GameObject Crate)
     {
         Destroy(Crate);
-        GetComponent<Stats>().Fuel += 25;
-        if (GetComponent<Stats>().Fuel > GetComponent<Stats>().MaxFuel)
-            GetComponent<Stats>().Fuel = GetComponent<Stats>().MaxFuel;
+        stats.Fuel += 25;
+        if (stats.Fuel > stats.MaxFuel)
+            stats.Fuel = stats.MaxFuel;
         Destroy(Crate);
     }
 }

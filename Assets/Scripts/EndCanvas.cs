@@ -8,6 +8,7 @@ public class EndCanvas : MonoBehaviour {
     public Canvas endGame;
     public Text endText;
     public GameObject player;
+    public LevelSystem levelSystem;
     private void Start()
     {
         if ((!endGame.enabled))
@@ -18,6 +19,7 @@ public class EndCanvas : MonoBehaviour {
 
     void LateUpdate()
     {
+        //Debug.Log(GameObject.FindGameObjectsWithTag("Turet").Length.ToString());
         if ((!endGame.enabled) && player.GetComponent<Stats>().HP <= 0)
         {
             Cursor.visible = true;
@@ -26,8 +28,12 @@ public class EndCanvas : MonoBehaviour {
         }
         else if ((!endGame.enabled) && GameObject.FindGameObjectsWithTag("Turet").Length <= 0)
         {
-            endGame.enabled = true;
-            Cursor.visible = true;
+            levelSystem.NewLvl();
+            if (RenderSettings.skybox.HasProperty("_Tint"))
+                RenderSettings.skybox.SetColor("_Tint", Random.ColorHSV());
+            else if (RenderSettings.skybox.HasProperty("_SkyTint"))
+                RenderSettings.skybox.SetColor("_SkyTint", Random.ColorHSV());
+            Debug.Log("NEXT");
 
         }
         else if  ((!endGame.enabled) && player.GetComponent<Stats>().Fuel <= 0)

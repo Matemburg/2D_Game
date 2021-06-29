@@ -5,15 +5,10 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour {
 
     public GameObject SpaceShip;
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
+	public int z = -5;
 	
-	// Update is called once per frame
-	void Update () {
-        transform.position= new Vector3 (SpaceShip.transform.position.x, SpaceShip.transform.position.y,-5);
+	void LateUpdate () {
+        transform.position= new Vector3 (SpaceShip.transform.position.x, SpaceShip.transform.position.y,z);
 
 	}
 }

@@ -7,8 +7,6 @@ public class TuretRandomSpawner : MonoBehaviour {
     public GameObject[] Turet;
     private List<GameObject> SpawnedTurets;
 
-    public int TuretNumber;
-
     public float xMin;
     public float xMax;
 
@@ -16,7 +14,7 @@ public class TuretRandomSpawner : MonoBehaviour {
     public float yMin;
     public float yMax;
 
-    void Awake()
+    public void SpawnTurets(int TuretNumber)
     {
         SpawnedTurets = new List<GameObject>();
         for (int x = 0; x < TuretNumber; x++)

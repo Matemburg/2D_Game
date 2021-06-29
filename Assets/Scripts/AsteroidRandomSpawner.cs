@@ -19,7 +19,7 @@ public class AsteroidRandomSpawner : MonoBehaviour
     public float yMin;
     public float yMax;
 
-    void Start()
+    public void Spawn()
     {
         Turets =  GameObject.FindGameObjectWithTag("TuretSpawner").GetComponent<TuretRandomSpawner>().getSpawnedTurets();
         for (int x = 0; x < AsteroidNumber; x++)
@@ -31,16 +31,26 @@ public class AsteroidRandomSpawner : MonoBehaviour
                 if (System.Math.Abs(pos.x - turet.transform.position.x) < 2)
                 {
                     spawn = false;
+                    AsteroidNumber++;
                     //break;
                 }
                 else if(System.Math.Abs(pos.y - turet.transform.position.y) < 2)
                 {
                     spawn = false;
+                    AsteroidNumber++;
                     //break;
                 }
             }
             if(spawn)
               Instantiate(Asteroids[Random.Range(0, Asteroids.Length)], pos, transform.rotation);
+        }
+
+
+    }
+    public void Destroy()
+    {
+        foreach(GameObject Asteroid in Asteroids){
+            Destroy(Asteroid.gameObject);
         }
     }
 }

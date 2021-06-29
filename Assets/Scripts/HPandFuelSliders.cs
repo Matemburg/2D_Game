@@ -7,14 +7,14 @@ public class HPandFuelSliders : MonoBehaviour {
     public Text TuretsLeft;
     public Text HPnumber;
     public Text Fuelnumber;
-    public GameObject Starship;
+    public Stats StarshipStats;
     public Slider HPslider;
     public Slider FuelSlider;
 
     // Use this for initialization
     void Start () {
-        int MaxHP = Starship.GetComponent<Stats>().MaxHP;
-        float MaxFuel = Starship.GetComponent<Stats>().MaxFuel;
+        int MaxHP = StarshipStats.MaxHP;
+        float MaxFuel = StarshipStats.MaxFuel;
         HPslider.maxValue = MaxHP;
         FuelSlider.maxValue = MaxFuel;
     }
@@ -22,10 +22,10 @@ public class HPandFuelSliders : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        float Fuel = Starship.GetComponent<Stats>().Fuel;
-        int HP = Starship.GetComponent<Stats>().HP;
-        int MaxHP = Starship.GetComponent<Stats>().MaxHP;
-        float MaxFuel =Starship.GetComponent<Stats>().MaxFuel;
+        float Fuel = StarshipStats.Fuel;
+        int HP = StarshipStats.HP;
+        int MaxHP = StarshipStats.MaxHP;
+        float MaxFuel =StarshipStats.MaxFuel;
 
         HPnumber.text = HP.ToString() + "/" + MaxHP.ToString();
         Fuelnumber.text = Fuel.ToString() + "/" + MaxFuel.ToString();

@@ -9,7 +9,7 @@ public class PanelManager : MonoBehaviour {
 	public Animator initiallyOpen;
 
 	private int m_OpenParameterId;
-	private Animator m_Open;
+	public Animator m_Open;
 	private GameObject m_PreviouslySelected;
 
 	const string k_OpenTransitionName = "Open";
@@ -42,22 +42,6 @@ public class PanelManager : MonoBehaviour {
 		m_Open = anim;
 		m_Open.SetBool(m_OpenParameterId, true);
 
-		//GameObject go = FindFirstEnabledSelectable(anim.gameObject);
-
-		//SetSelected(go);
-	}
-
-	static GameObject FindFirstEnabledSelectable (GameObject gameObject)
-	{
-		GameObject go = null;
-		var selectables = gameObject.GetComponentsInChildren<Selectable> (true);
-		foreach (var selectable in selectables) {
-			if (selectable.IsActive () && selectable.IsInteractable ()) {
-				go = selectable.gameObject;
-				break;
-			}
-		}
-		return go;
 	}
 
 	public void CloseCurrent()
@@ -66,7 +50,6 @@ public class PanelManager : MonoBehaviour {
 			return;
 
 		m_Open.SetBool(m_OpenParameterId, false);
-		SetSelected(m_PreviouslySelected);
 		StartCoroutine(DisablePanelDeleyed(m_Open));
 		m_Open = null;
 	}
@@ -87,10 +70,5 @@ public class PanelManager : MonoBehaviour {
 
 		if (wantToClose)
 			anim.gameObject.SetActive(false);
-	}
-
-	private void SetSelected(GameObject go)
-	{
-		EventSystem.current.SetSelectedGameObject(go);
 	}
 }

@@ -20,7 +20,7 @@ public static class ScoreSaver {
                 ScoreTable = binaryFormatter.Deserialize(stream) as List<ScoreCointaner>;
                 Debug.Log("Po wczytaniu" + ScoreTable.Count);
             }
-            catch(System.Exception e)
+            catch
             {
                 Debug.LogError("Not open");
                 ScoreTable = new List<ScoreCointaner>();
